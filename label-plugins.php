@@ -82,18 +82,10 @@ $cat=get_option('plugin-category_'.$pn);
 </form>
 
   
-<?php; break;
+<?php
+ break;
 }
-} add_action( 'manage_plugins_custom_column' , 'render_plugins_column', 10, 3 );
-
-
-
-
-
-
-
-
-
-
+} 
+add_action( 'manage_plugins_custom_column' , 'render_plugins_column', 10, 3 );
 
 ?>
