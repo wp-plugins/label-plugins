@@ -4,7 +4,7 @@ Plugin Name: Label Plugins
 Plugin URI: http://wordpress.org/plugins/label-plugins
 Description: Did you ever struggle with multiple plugins, now you have chance to label them.
 Author: wp-plugin-dev.com
-Version: 0.1
+Version: 0.11
 Author URI: http://www.wp-plugin-dev.com/
 */
 
