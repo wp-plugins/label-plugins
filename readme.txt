@@ -3,8 +3,8 @@ Contributors: theode
 Donate link: http://www.wp-plugin-dev.com/donate
 Tags: categories, category, development, label, labeling, 
 Requires at least: 3.0
-Tested up to: 3.6-beta3-24280
-Stable tag: 0.11
+Tested up to: 3.6-beta3-24375
+Stable tag: 0.2
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -37,7 +37,9 @@ Contact us at http://www.wp-plugin-dev.com/support-contact/
 
 1. Plugin Categories
 2. Labeling
+3. Backend to create Labels
 
 == Changelog ==
 
+= 0.2 =  Dynamic labels in backend
 = 0.1 =  Initial release

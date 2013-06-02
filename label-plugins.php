@@ -4,13 +4,33 @@ Plugin Name: Label Plugins
 Plugin URI: http://wordpress.org/plugins/label-plugins
 Description: Did you ever struggle with multiple plugins, now you have chance to label them.
 Author: wp-plugin-dev.com
-Version: 0.11
+Version: 0.2
 Author URI: http://www.wp-plugin-dev.com/
 */
 
 
+//
+include('lp_admin_page.php');
+register_activation_hook( __FILE__, "initial_plugin_labels" );
+
 function add_ps($buffer) {
-  return (str_replace("<form method=\"get\" action=\"\">","<ul class='subsubsub'> categories: <lI><a href=\"?plugin_status=good\">good</a></li> | <lI><a href=\"?plugin_status=average\">average</a></li> | <lI><a href=\"?plugin_status=bad\">bad</a></li></ul><form method=\"get\" action=\"\">", $buffer));
+
+$labels=get_option("plugin_labels" );
+$category_li_string="";
+$num=1;
+$count=count($labels);
+foreach ($labels as $label){
+if($num<$count){
+$category_li_string=$category_li_string."<lI><a href=\"?plugin_status=".$label."\">".$label."</a></li>";
+if($num!=$count-1) $category_li_string=$category_li_string." |"; 
+
+}
+else{}
+
+$num++;
+}
+
+  return (str_replace("<form method=\"get\" action=\"\">","<ul class='subsubsub'> categories: ".$category_li_string."</ul><form method=\"get\" action=\"\">", $buffer));
 }
 
 function plugin_permissions_mp($plugins)  
@@ -68,15 +88,26 @@ if(isset($_POST['plugin-category_'.$pn])){
 update_option('plugin-category_'.$pn,$_POST['plugin-category_'.$pn]);
 }
 $cat=get_option('plugin-category_'.$pn);
+
+
+$labels=get_option("plugin_labels" );
+$num=1;
+$count=count($labels);
+
 ?>
 
 <form action="" method="POST" name="plugin-category">
 <select name="plugin-category <?php echo $plugin_data[Name];?>" id="plugin-category" onchange="this.form.submit()">
         <option value="neutral" <?php if($cat=="neutral"){echo "selected=selected";}?> >neutral</option>
-        <option value="bad" <?php if($cat=="bad"){echo "selected=selected";}?> >bad</option>
-        <option value="average" <?php if($cat=="average"){echo "selected=selected";}?> >average</option>
-        <option value="good" <?php if($cat=="good"){echo "selected=selected";}?> >good</option>
-        
+        <?php
+
+foreach ($labels as $label){ 
+if($num<$count){
+?>
+
+<option value="<?php echo $label; ?>" <?php if($cat==$label){echo "selected=selected";} ?> ><?php echo $label;?></option>
+ <?php }else{} $num++; }
+  ?>
 
     </select>
 </form>
