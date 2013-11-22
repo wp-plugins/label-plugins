@@ -4,7 +4,7 @@ Plugin Name: Label Plugins
 Plugin URI: http://wordpress.org/plugins/label-plugins
 Description: Did you ever struggle with multiple plugins, now you have chance to label them.
 Author: wp-plugin-dev.com
-Version: 0.2
+Version: 0.3
 Author URI: http://www.wp-plugin-dev.com/
 */
 
@@ -46,7 +46,7 @@ $pn=str_replace(" ","_",$pn);
 $cat='plugin-category_'.$pn;
 $an=get_option($cat);
 
-if(isset($_GET['plugin_status']) && $an!=$_GET['plugin_status'] && $_GET['plugin_status']!="all"){
+if(isset($_GET['plugin_status']) && $an!=$_GET['plugin_status'] && $_GET['plugin_status']!="all" && $_GET['plugin_status']!="active" && $_GET['plugin_status']!="recently_activated" && $_GET['plugin_status']!="inactive" && $_GET['plugin_status']!="upgrade"){
 unset($plugins[$kn]);
 }else
 {

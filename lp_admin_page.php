@@ -7,10 +7,11 @@ add_options_page( "Label Plugins", "Label Plugins", "delete_users", "label-plugi
 // dynamic field code by http://www.mustbebuilt.co.uk/2012/07/27/adding-form-fields-dynamically-with-jquery/
 
 function initial_plugin_labels(){
-
+$labels=get_option("plugin_labels");
+if ($labels==""){
 $labels = array(label1 => "good", label2 => "average", label3 => "bad", add_plugin_labels => "");
 update_option("plugin_labels",$labels);
-
+}
 
 }
 
