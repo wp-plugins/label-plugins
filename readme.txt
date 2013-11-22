@@ -14,7 +14,7 @@ A plugin to label plugins. For an easy overview about your favorite plugins.
 
 Did you ever struggle with to many plugins in your WordPress installation?  I had enough of the messy plugin page on WordPress Backend. As developer I need sometimes a ranking for plugins. So I decided,  there have to be a way to label plugins or assign a category to them. On Macintosh computers you had this option for files since ages.
 
-That is why I was writing a code to label WordPress plugins. The labels in the moment are neutral(initial), bad, average, good but also can change them to labels like paid, modified, free or something else in the admin screen of this plugin
+That is why I was writing a code to label WordPress plugins. The labels in the moment are neutral(initial), bad, average, good but also can change them to labels like paid, modified, free or something else in the admin screen of this plugin.
 
 Labeling WordPress plugins has never been so easy.
 
