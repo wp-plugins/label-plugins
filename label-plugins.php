@@ -4,7 +4,7 @@ Plugin Name: Label Plugins
 Plugin URI: http://wordpress.org/plugins/label-plugins
 Description: Did you ever struggle with multiple plugins, now you have chance to label them.
 Author: wp-plugin-dev.com
-Version: 0.3
+Version: 0.31
 Author URI: http://www.wp-plugin-dev.com/
 */
 
@@ -37,11 +37,12 @@ function plugin_permissions_mp($plugins)
 {  
 ob_start("add_ps");
 //print_r($plugins);
-
 foreach ($plugins as $key => $value){
-$pn=str_replace(" ","_",$pluggy[Name]);
+error_reporting(E_ALL ^ E_NOTICE);
+//$pluggy=Array('Name'=>$value['Name']);
+$pn=str_replace(" ","_",$pluggy['Name']); // I know this line causes  unexpected errors but all of the magic does not work without that
 $kn=$key;
-$pn=$value[Name];
+$pn=$value['Name'];
 $pn=str_replace(" ","_",$pn);
 $cat='plugin-category_'.$pn;
 $an=get_option($cat);
@@ -83,7 +84,7 @@ function render_plugins_column( $column, $plugin_file, $plugin_data ) {
 $url = plugins_url();
 switch ($column) {
 case "category": 
-$pn=str_replace(" ","_",$plugin_data[Name]);
+$pn=str_replace(" ","_",$plugin_data['Name']);
 if(isset($_POST['plugin-category_'.$pn])){
 update_option('plugin-category_'.$pn,$_POST['plugin-category_'.$pn]);
 }
@@ -97,7 +98,7 @@ $count=count($labels);
 ?>
 
 <form action="" method="POST" name="plugin-category">
-<select name="plugin-category <?php echo $plugin_data[Name];?>" id="plugin-category" onchange="this.form.submit()">
+<select name="plugin-category <?php echo $plugin_data['Name'];?>" id="plugin-category" onchange="this.form.submit()">
         <option value="neutral" <?php if($cat=="neutral"){echo "selected=selected";}?> >neutral</option>
         <?php
 
